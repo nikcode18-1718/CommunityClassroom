@@ -1,0 +1,228 @@
+/* Rooom component styles
+   Usage example (HTML):
+   <div class="rooom">
+     <div class="rooom__media" aria-hidden="true"></div>
+     <div class="rooom__body">
+       <h3 class="rooom__title">Cozy Studio</h3>
+       <p class="rooom__meta">1 bed • 1 bath • 35 m²</p>
+       <p class="rooom__desc">Bright studio with a balcony and fast Wi‑Fi.</p>
+       <div class="rooom__actions">
+         <button class="rooom__btn rooom__btn--primary">Book</button>
+         <button class="rooom__btn">Details</button>
+       </div>
+     </div>
+   </div>
+*/
+
+/* CSS variables for quick theming */
+:root{
+  --rooom-bg: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  --rooom-accent: #6C5CE7;
+  --rooom-accent-2: #00B894;
+  --rooom-text: #E6EDF3;
+  --rooom-muted: #9FB3C8;
+  --rooom-radius: 14px;
+  --rooom-shadow: 0 8px 30px rgba(16, 24, 40, 0.45);
+  --rooom-border: rgba(255,255,255,0.06);
+  --rooom-gap: 14px;
+  --rooom-transition: 220ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* Base container */
+.rooom {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: var(--rooom-gap);
+  align-items: stretch;
+  background: var(--rooom-bg);
+  border: 1px solid var(--rooom-border);
+  border-radius: var(--rooom-radius);
+  padding: clamp(12px, 1.6vw, 18px);
+  color: var(--rooom-text);
+  box-shadow: var(--rooom-shadow);
+  overflow: hidden;
+  min-height: 120px;
+  max-width: 900px;
+  transition: transform var(--rooom-transition), box-shadow var(--rooom-transition);
+  backdrop-filter: blur(6px) saturate(110%);
+}
+
+/* Hover / focus lift */
+.rooom:hover,
+.rooom:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 50px rgba(16,24,40,0.55);
+}
+
+/* Media area (image / color block) */
+.rooom__media{
+  border-radius: calc(var(--rooom-radius) - 4px);
+  background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.12)), var(--rooom-accent);
+  background-size: cover;
+  background-position: center;
+  min-width: 0; /* allow flex shrink in grid */
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.12);
+  transition: transform var(--rooom-transition);
+}
+
+/* Example: set image using inline style or CSS variable */
+.rooom__media[style]{
+  background-color: unset; /* allow inline background-image */
+}
+.rooom__media::after{
+  /* subtle gradient overlay */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.24));
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* Body content */
+.rooom__body{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* Title and meta */
+.rooom__title{
+  margin: 0;
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--rooom-text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.rooom__meta{
+  margin: 0;
+  color: var(--rooom-muted);
+  font-size: 0.85rem;
+}
+
+/* Description allows wrapping */
+.rooom__desc{
+  margin: 0;
+  color: var(--rooom-text);
+  opacity: 0.94;
+  font-size: 0.95rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Actions row */
+.rooom__actions{
+  margin-top: auto; /* push to bottom */
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Buttons */
+.rooom__btn{
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.03);
+  color: var(--rooom-text);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform var(--rooom-transition), background var(--rooom-transition), box-shadow var(--rooom-transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Primary button style */
+.rooom__btn--primary{
+  background: linear-gradient(90deg, var(--rooom-accent), var(--rooom-accent-2));
+  border: none;
+  color: white;
+  box-shadow: 0 6px 18px rgba(108,92,231,0.26);
+}
+
+/* Interaction states */
+.rooom__btn:hover{
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.05);
+}
+.rooom__btn--primary:hover{
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 10px 26px rgba(108,92,231,0.32);
+}
+.rooom__btn:active{
+  transform: translateY(0);
+}
+
+/* Small variant */
+.rooom--compact{
+  grid-template-columns: 100px 1fr;
+  padding: 10px;
+  --rooom-radius: 10px;
+}
+
+/* Large variant (banner-like) */
+.rooom--large{
+  grid-template-columns: 220px 1fr;
+  padding: 20px;
+  --rooom-radius: 18px;
+}
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .rooom, .rooom__btn, .rooom__media { transition: none; transform: none; }
+}
+
+/* Responsive: stack on narrow screens */
+@media (max-width: 640px){
+  .rooom{
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 12px;
+  }
+  .rooom__media{
+    aspect-ratio: 16/9;
+    border-radius: calc(var(--rooom-radius) - 2px);
+  }
+  .rooom__actions{
+    justify-content: flex-end;
+  }
+}
+
+/* Utility helpers */
+.rooom--outline{
+  border: 1px dashed rgba(255,255,255,0.04);
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+}
+
+/* Small decorative badge support */
+.rooom__badge{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0,0,0,0.45);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+}
+
+/* Example state: unavailable */
+.rooom--unavailable{
+  filter: grayscale(0.45) contrast(0.85) opacity(0.9);
+  pointer-events: none;
+}
