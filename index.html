@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="A minimal, responsive starter index.html template." />
+  <meta name="theme-color" content="#0ea5e9" />
+
+  <title>My Project — Home</title>
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="My Project — Home" />
+  <meta property="og:description" content="A minimal, responsive starter index.html template." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon (replace with your files) -->
+  <link rel="icon" href="favicon.ico" />
+
+  <!-- Minimal styles; move to external CSS for bigger projects -->
+  <style>
+    :root{
+      --bg:#0f172a;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#0ea5e9;
+      --radius:12px;
+      --gap:1rem;
+      color-scheme: dark;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg, #071025 0%, #071022 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:2rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .container{
+      width:100%;
+      max-width:1000px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      box-shadow: 0 6px 30px rgba(2,6,23,0.7);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:var(--gap);
+    }
+
+    header.site-header{
+      grid-column:1 / -1;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:1rem 1.25rem;
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    }
+
+    .brand{display:flex;gap:.75rem;align-items:center}
+    .logo{
+      width:40px;height:40px;border-radius:10px;background:var(--accent);display:inline-block;
+      box-shadow:0 3px 10px rgba(14,165,233,0.18);
+    }
+    .brand h1{font-size:1rem;margin:0}
+    .brand p{margin:0;font-size:.85rem;color:var(--muted)}
+
+    nav{display:flex;gap:1rem;align-items:center}
+    nav a{
+      color:var(--muted);text-decoration:none;font-weight:600;font-size:.95rem;padding:.35rem .6rem;border-radius:8px;
+    }
+    nav a:hover{background:rgba(255,255,255,0.02);color:var(--accent)}
+
+    main{
+      padding:1.5rem;
+    }
+
+    .hero{
+      display:flex;
+      flex-direction:column;
+      gap:.75rem;
+      max-width:56ch;
+    }
+    .hero h2{margin:0;font-size:1.8rem;line-height:1.05}
+    .hero p{margin:0;color:var(--muted)}
+
+    .features{
+      margin-top:1.25rem;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:.75rem;
+    }
+    .card{
+      background:rgba(255,255,255,0.01);
+      border:1px solid rgba(255,255,255,0.02);
+      padding:1rem;border-radius:10px;
+    }
+    .card h3{margin:.15rem 0;font-size:1rem}
+    .card p{margin:0;color:var(--muted);font-size:.92rem}
+
+    aside.sidebar{
+      padding:1.25rem;
+      border-left:1px solid rgba(255,255,255,0.02);
+      background:linear-gradient(180deg, rgba(255,255,255,0.007), transparent);
+    }
+    .cta{
+      display:flex;flex-direction:column;gap:.6rem;
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      background:var(--accent);color:#06223a;border:none;padding:.6rem .85rem;border-radius:8px;font-weight:700;cursor:pointer;
+      text-decoration:none;
+    }
+    .muted{color:var(--muted);font-size:.9rem}
+
+    footer.site-footer{
+      grid-column:1 / -1;
+      padding:1rem 1.25rem;border-top:1px solid rgba(255,255,255,0.02);
+      display:flex;justify-content:space-between;font-size:.9rem;color:var(--muted);
+      background:linear-gradient(180deg, transparent, rgba(0,0,0,0.03));
+    }
+
+    /* Responsive */
+    @media (max-width:880px){
+      .container{grid-template-columns:1fr; padding:0}
+      aside.sidebar{order:3;border-left:none;border-top:1px solid rgba(255,255,255,0.02)}
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="document" aria-labelledby="site-title">
+    <header class="site-header">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <div>
+          <h1 id="site-title">My Project</h1>
+          <p class="muted">A clean starter template</p>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--accent)">Get Started</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <h2 id="hero-title">Fast, accessible, and minimal — your project's index.html</h2>
+        <p>Use this template as a starting point for prototypes or small projects. It includes a simple layout, responsive styles, and semantic markup.</p>
+
+        <div class="features" id="features" aria-label="Key features">
+          <article class="card">
+            <h3>Responsive</h3>
+            <p>Mobile-first layout with a flexible two-column design that collapses on small screens.</p>
+          </article>
+
+          <article class="card">
+            <h3>Accessible</h3>
+            <p>Meaningful landmarks, ARIA labels, and readable contrast for better accessibility.</p>
+          </article>
+
+          <article class="card">
+            <h3>Lightweight</h3>
+            <p>No frameworks required — just a tiny stylesheet and minimal JavaScript for interactions.</p>
+          </article>
+
+          <article class="card">
+            <h3>Extendable</h3>
+            <p>Easy to replace styles and add components or a bundler/build system when needed.</p>
+          </article>
+        </div>
+
+        <section id="about" style="margin-top:1rem">
+          <h3 style="margin:.6rem 0 0">About</h3>
+          <p class="muted">Replace this copy with a short description of your app, product, or portfolio. Add links, images, or interactive content as required.</p>
+        </section>
+      </section>
+    </main>
+
+    <aside class="sidebar" aria-labelledby="sidebar-title">
+      <h3 id="sidebar-title">Get started</h3>
+      <div class="cta" role="region" aria-label="Call to action">
+        <a class="btn" href="#contact">Contact us</a>
+        <a class="btn" href="#" style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)">Documentation</a>
+      </div>
+
+      <form id="contact" style="margin-top:1rem;display:grid;gap:.6rem" onsubmit="handleSubmit(event)">
+        <label for="email" class="muted">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required
+               style="padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+
+        <label for="message" class="muted">Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Hi — I'm interested..." required
+                  style="padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
+
+        <button type="submit" class="btn">Send</button>
+        <div id="form-result" class="muted" role="status" aria-live="polite" style="font-size:.9rem"></div>
+      </form>
+    </aside>
+
+    <footer class="site-footer">
+      <div>© <span id="year"></span> My Project</div>
+      <div class="muted">Built with a tiny index.html starter</div>
+    </footer>
+  </div>
+
+  <script>
+    // Small helpers: set year, handle form submit
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function handleSubmit(event){
+      event.preventDefault();
+      const result = document.getElementById('form-result');
+      const email = document.getElementById('email').value;
+      result.textContent = 'Thanks — we received your message from ' + email + '. (Demo only)';
+      // Hook this up to your API / backend here.
+      event.target.reset();
+      setTimeout(()=> result.textContent = '', 5000);
+    }
+
+    // Accessibility: focus outline for keyboard users only
+    (function(){
+      let mouseUsed = false;
+      window.addEventListener('mousedown', ()=> mouseUsed = true);
+      window.addEventListener('keydown', (e)=>{
+        if(e.key === 'Tab') mouseUsed = false;
+      });
+      document.body.addEventListener('focusin', (e)=>{
+        if(!mouseUsed) e.target.classList.add('focus-ring');
+      });
+      document.body.addEventListener('focusout', (e)=>{
+        e.target.classList.remove('focus-ring');
+      });
+    })();
+  </script>
+</body>
+</html>
